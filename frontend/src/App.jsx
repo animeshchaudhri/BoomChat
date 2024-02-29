@@ -8,7 +8,10 @@ function App() {
 
   return (
     <>
-      <Home/>
+    <React.StrictMode>
+    <Home/>
+    </React.StrictMode>
+    
     </>
   )
 }

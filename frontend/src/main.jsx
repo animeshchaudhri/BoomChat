@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   },
 ]);
 
-export const socket = io("http://localhost:3000");
+export const socket = io("https://chatsocketio-mcnp.onrender.com/");
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   // // <React.StrictMode>
