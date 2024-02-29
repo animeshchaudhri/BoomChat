@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { io } from 'socket.io-client'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,13 +15,18 @@ const router = createBrowserRouter([
   },
   {
     path: "room/:id",
-    element: <Chat />,  
+    element: <Chat  />,  
   },
 ]);
 
+export const socket = io("http://localhost:3000");
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router} />
-  </React.StrictMode>,
+  // // <React.StrictMode>
+  //   {/* <App /> */}
+  //   <>
+   
+  // {/* // </React.StrictMode>, */}
+  // </>
+  <RouterProvider router={router} />
 )
