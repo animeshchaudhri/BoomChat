@@ -24,13 +24,14 @@ io.on("connection", (socket) => {
   console.log("a user connected");
  
   socket.on("createRoom", (data) => {
-    // console.log(data)
+    console.log(data)
     const room = {
       id: uuidv4(),
       users: [
         {
           name: data.name,
           socketId: socket.id,
+          roomid: data.room,
         },
       ],
     };
@@ -44,13 +45,14 @@ io.on("connection", (socket) => {
   });
 
   socket.on("joinroom", (data) => {
-    const room = rooms.find((room) => room.id === data.room);
+    console.log(data);
+    const room = rooms.find(room => room.users.some(user => user.roomid === data.room));
     if (room) {
       room.users.push({
         name: data.name,
         socketId: socket.id,
       });
-      socket.join(data.room);
+      socket.join(room.id);
       
       socket.emit("joinedroom",{
         room: room.id,
