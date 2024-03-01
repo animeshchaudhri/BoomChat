@@ -5,7 +5,7 @@ function Form({ name, room, handleInputChange, handleRoomAction }) {
     <>
     
     <div className="Form_container">
-    <h1>Welcome to dev chat</h1>
+    <h1>Welcome to chat boom</h1>
       
       <div className="Input_form">
         <label  className="Input_label" htmlFor="name">Name:</label>

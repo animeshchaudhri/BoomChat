@@ -24,29 +24,9 @@ io.on("connection", (socket) => {
   console.log("a user connected");
  
   socket.on("createRoom", (data) => {
-    console.log(data)
-    const room = {
-      id: uuidv4(),
-      users: [
-        {
-          name: data.name,
-          socketId: socket.id,
-          roomid: data.room,
-        },
-      ],
-    };
-    rooms.push(room);
-    socket.join(room.id);
-    
-    socket.emit("roomcreated",{
-      room: room.id,
-      name: room.users[0].name,
-    });
-  });
-
-  socket.on("joinroom", (data) => {
-    console.log(data);
+    // console.log(data)
     const room = rooms.find(room => room.users.some(user => user.roomid === data.room));
+    // console.log(room);
     if (room) {
       room.users.push({
         name: data.name,
@@ -55,6 +35,53 @@ io.on("connection", (socket) => {
       socket.join(room.id);
       
       socket.emit("joinedroom",{
+        room: room.id,
+        name: room.users[0].name,
+      });
+    }
+    else{
+
+      const room = {
+        id: uuidv4(),
+        users: [
+          {
+            name: data.name,
+            socketId: socket.id,
+            roomid: data.room,
+          },
+        ],
+      };
+      rooms.push(room);
+      socket.join(room.id);
+      
+      socket.emit("roomcreated",{
+        room: room.id,
+        name: room.users[0].name,
+      });
+
+    }
+
+  });
+
+  socket.on("joinroom", (data) => {
+    // console.log(data);
+    const room = rooms.find(room => room.users.some(user => user.roomid === data.room));
+    if (room) {
+      
+      const userExists = room.users.some(user => user.id === data.id);
+
+      if (!userExists) {
+       
+        room.users.push({
+          id: data.id,
+          name: data.name,
+          roomid: data.room
+        });
+        socket.join(room.id);
+      }
+
+
+      socket.emit("joinedroom", {
         room: room.id,
         name: room.users[0].name,
       });
@@ -82,11 +109,7 @@ io.on("connection", (socket) => {
       }
     }
   });
-  
- 
-
-
-});
+  });
 
 server.listen(3000, () => {
   console.log("server running at http://localhost:3000");

@@ -1,14 +1,21 @@
+import { Navigate, useNavigate } from "react-router-dom";
+import "./Navbar.css";
 
-import "./navbar.css";
+// Inside your component
+
+
+
 const Navbar = () => {
+    const navigate = useNavigate();
+
     return (
-        <nav>
+        <nav className="navbar">
             <div className="logo">
-                {/* Add your logo here */}
+                <h1>chat boom</h1>
             </div>
             <div className="leave-room-button">
-                <button>Leave Room</button>
-            </div>
+            <button onClick={() => navigate('/')}>Leave Room</button>             
+             </div>
         </nav>
     );
 };

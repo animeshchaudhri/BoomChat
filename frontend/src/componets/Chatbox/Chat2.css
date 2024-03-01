@@ -1,17 +1,63 @@
+p{
+    color: white;
+}
 
 
-.chat-container {
+.chat_container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
- 
-    height: 418px;
+    width: 100%;
+  
+    flex-direction: column;
+    /* height: 418px; */
     background: rgba( 255, 255, 255, 0.05 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 12px );
     -webkit-backdrop-filter: blur( 12px );
-    border-radius: 10px;
+    
     border: 1px solid rgba( 255, 255, 255, 0.18 );
+    
+
+}
+.Users{
+    
+        font-size: calc(calc(15px + 0.15vh) * 1.25);
+}
+.User_Container{
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  background-color: #0f4c75;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+
+}
+.User_list{
+    font-size: calc(calc(15px + 0.15vh) * 1.25);
+}
+.Userlist{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+.users_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.chat-container {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    grid-template-columns: 320px 1fr;
+    height: 418px;
+    /*  */
+    height: calc(100vh - 70px);
     
 
 }
@@ -19,17 +65,22 @@
 .left-container {
     flex: 1;
     padding: 20px;
+    background: rgba( 255, 255, 255, 0.05 );
+    height: 100%;
+    width: 320px;
     
-    /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
+    border: 1px solid rgba( 255, 255, 255, 0.18 ); 
 
 }
 
 .right-container {
-    flex: 2;
+   
     padding: 20px;
-    
-    /* border: 1px solid rgba( 255, 255, 255, 0.18 ); */
-
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+     border: 1px solid rgba( 255, 255, 255, 0.18 ); 
+    gap: 10px;
 }
 
 h2 {
@@ -46,15 +97,19 @@ li {
 }
 
 .chat-history {
-    height: 300px;
-    
-    /* border: 1px solid #ccc; */
+   height: calc(
+    100% - 20px
+   );
+ 
+     border: 1px solid #ccc; 
     padding: 10px;
 }
 
 .text-input {
     display: flex;
-    margin-top: 20px;
+    width: 100%;
+    height: max-content;
+   
 }
 
 input[type="text"] {
@@ -73,3 +128,16 @@ button {
     border-radius: 3px;
     cursor: pointer;
 }
+.left {
+    display: flex;
+    text-align: left;
+    gap: 2px;
+    ;
+  }
+  
+  .right {
+    display: flex   ;
+    text-align: right;
+    gap: 2px;
+    justify-content: right;
+  }

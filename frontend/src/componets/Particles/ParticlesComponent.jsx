@@ -1,8 +1,10 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState , memo  } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 
-const ParticlesComponent = () => {
+
+const ParticlesComponent = memo(function ParticlesComponent(props) {
+
     const [ init, setInit ] = useState(false);
 
     useEffect(() => {
@@ -14,7 +16,7 @@ const ParticlesComponent = () => {
     }, []);
 
     const particlesLoaded = (container) => {
-        console.log(container);
+        
     };
 
     return (
@@ -83,10 +85,10 @@ const ParticlesComponent = () => {
                         value: { min: 1, max: 3 },
                     },
                 },
-                // detectRetina: true,
+                 detectRetina: true,
             }}
         />
     );
-};
+});
 
 export default ParticlesComponent;
