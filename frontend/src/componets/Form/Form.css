@@ -1,0 +1,35 @@
+.Form_container{
+    width: 320px;
+    height: 418px;
+    background: rgba( 255, 255, 255, 0.05 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 12px );
+    -webkit-backdrop-filter: blur( 12px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+    display: flex;
+    flex-direction: column;
+    
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+ 
+}
+.Button_Group{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    ;
+}
+.Input_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+    color: white;
+}
+.Input_label{
+    padding: 0 10px 0px 0px;
+}

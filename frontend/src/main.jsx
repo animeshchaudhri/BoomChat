@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App.jsx'
-import Chat from "./Pages/Chat.jsx"
+import Chat from "./Pages/Chat/Chat.jsx"
 import './index.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { io } from 'socket.io-client'

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { socket } from "../main";
+import { socket } from "../../main";
 import { useParams } from "react-router-dom";
+import "./Chat.css";
+import Chatbox from "../../componets/Chatbox/Chatbox";
+
 
 export default function Chat() {
   const { id } = useParams();
@@ -76,6 +79,7 @@ export default function Chat() {
   return (
     <div>
       <div className="chat-room">
+        <Chatbox/>
         <h1>{id}</h1>
         
         <h2>{name}</h2>

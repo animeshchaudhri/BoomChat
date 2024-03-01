@@ -1,0 +1,9 @@
+h1{
+    color: white;
+}
+.conatiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
