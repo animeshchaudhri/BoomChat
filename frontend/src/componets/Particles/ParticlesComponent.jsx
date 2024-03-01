@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState , memo  } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import Skeleton from 'react-loading-skeleton'; t
+import Skeleton from 'react-loading-skeleton'; 
 
 const ParticlesComponent = memo(function ParticlesComponent(props) {
 
