@@ -1,15 +1,18 @@
 import React, { useCallback, useEffect, useState , memo  } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-
+import Skeleton from 'react-loading-skeleton'; t
 
 const ParticlesComponent = memo(function ParticlesComponent(props) {
 
-    const [ init, setInit ] = useState(false);
+    const [init, setInit] = useState(false);
+    const [isLoading, setIsLoading] = useState(true); 
 
     useEffect(() => {
         initParticlesEngine(async (engine) => {
+            setIsLoading(true); 
             await loadSlim(engine);
+            setIsLoading(false);
         }).then(() => {
             setInit(true);
         });
@@ -20,7 +23,7 @@ const ParticlesComponent = memo(function ParticlesComponent(props) {
     };
 
     return (
-        init && <Particles
+        isLoading ? <Skeleton /> : (init && <Particles
             id="tsparticles"
             particlesLoaded={particlesLoaded}
             options={{
@@ -87,7 +90,7 @@ const ParticlesComponent = memo(function ParticlesComponent(props) {
                 },
                  detectRetina: true,
             }}
-        />
+        />)
     );
 });
 

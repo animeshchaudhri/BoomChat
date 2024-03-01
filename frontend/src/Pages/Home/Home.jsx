@@ -21,7 +21,7 @@ function Home() {
   const handleRoomAction = (action) => {
     socket.emit(action, { name, room });
     socket.on(action === "joinroom" ? "joinedroom" : "roomcreated", (data) => {
-      console.log(data);
+      // console.log(data);
       navigate(`room/${data.room}`);
     });
   };

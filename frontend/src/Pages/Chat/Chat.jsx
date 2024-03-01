@@ -7,69 +7,91 @@ import Navbar from "../../componets/Navbar/Navbar";
 
 export default function Chat() {
   const { id } = useParams();
+
   const [chats, setChats] = useState([]);
   const [message, setMessage] = useState("");
   const [name, setName] = useState();
 
+
+  
+
+ 
+ 
+
   const handleSubmit = () => {
     socket.emit("getname", socket.id);
+    
     socket.on("gotname", (data) => {
-      setName(data);
-    });
-
+    setName(data)
+   
+    }
+    );
     socket.emit("outgoingMessage", {
       message: message,
       room: id,
       name: name,
+      
     });
 
     setChats(prevChats => [...prevChats, {
       action: "outgoing",
       message: message,
-      name: name,
+      name : name,
     }]);
-
     setMessage("");
   };
 
   const handleChange = (e) => {
     setMessage(e.target.value);
   };
-
+  
   useEffect(() => {
     const handleIncomingMessage = (data) => {
+      // console.log("Incoming message:", data);
       setChats(prevChats => [...prevChats, {
         action: "incoming",
         message: data.message,
-        name: data.name,
+        name : data.name,
       }]);
+      
     };
 
     socket.on("IncomingMessage", handleIncomingMessage);
+ 
+    
   }, []);
-
-  useEffect(() => {}, [chats]);
 
   useEffect(() => {
-    socket.emit("getname", socket.id);
-    socket.on("gotname", (data) => {
-      setName(data);
-    });
-  }, []);
+    // console.log("Chats updated:", chats);
+    
+  }, [chats]);
+  
+  useEffect(() => {
+    socket.emit("getname",socket.id);
+    // console.log("getname",socket.id);
+ 
+  socket.on("gotname", (data) => { 
+    // console.log(data)
+     setName(data) });
 
+  
+  },[]);
+ 
   return (
     <>
       <div className="chat-room">
-        <Navbar />
-        <Chatbox
-          id={id}
-          chats={chats}
-          name={name}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          message={message}
+        <Navbar/>
+        <Chatbox 
+        id={id} 
+        
+        chats={chats}
+        name={name}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        message={message}
         />
+        
       </div>
-    </>
+   </>
   );
 }

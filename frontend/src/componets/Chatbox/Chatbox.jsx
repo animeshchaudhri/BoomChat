@@ -46,6 +46,12 @@ const Chatbox = ({ id, chats, handleChange, handleSubmit, message }) => {
             value={message}
             onChange={handleChange}
             placeholder="Type your message..."
+            onKeyDown={event => {
+              if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission
+              handleSubmit();  // replace with your function
+              }
+            }}
           />
           <button onClick={handleSubmit}>Send</button>
         </div>
