@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState, memo } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadFull } from "tsparticles";
+import { loadSlim } from "@tsparticles/slim";
 
 const ParticlesComponent = memo(function ParticlesComponent(props) {
     const [init, setInit] = useState(false);
 
     useEffect(() => {
         initParticlesEngine(async (engine) => {
-             await loadFull(engine);
+            await loadSlim(engine);
             setInit(true);
         });
     }, []);
