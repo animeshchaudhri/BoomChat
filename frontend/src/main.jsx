@@ -6,7 +6,7 @@ import "./index.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { io } from "socket.io-client";
 
-export const socket = io("https://desertfancier-watcher.toystack.dev/");
+export const socket = io("https://chatsocketio-mcnp.onrender.com");
 
 ReactDOM.render(
   <React.StrictMode>
